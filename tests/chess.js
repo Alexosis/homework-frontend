@@ -37,4 +37,14 @@ QUnit.module('Тестируем функцию chess', function () {
 		assert.strictEqual(chess('8'), expected);
 	});
 
+	QUnit.test('Проверка входных данных на валидность', function (assert) {
+		let object = {
+			this: 1,
+			is: "2",
+			 Sparta: "!!!",
+		};
+		assert.strictEqual(chess("this is a string"), null);
+		assert.strictEqual(chess(Infinity), null);
+		assert.strictEqual(chess(object), null);
+	});
 });
