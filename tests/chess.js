@@ -2,8 +2,8 @@
 
 QUnit.module('Тестируем функцию chess', function () {
 	QUnit.test('Шахматной доски 1 на 1 не бывает', function (assert) {
-		assert.strictEqual(chess(1), null);
-		assert.strictEqual(chess('1'), null);
+		assert.strictEqual(chess(1), "Шахматной доски размером меньше чем 2х2 не бывает");
+		assert.strictEqual(chess('1'), "Шахматной доски размером меньше чем 2х2 не бывает");
 	});
 
 	QUnit.test('Шахматная доска 2 на 2', function (assert) {
@@ -38,13 +38,13 @@ QUnit.module('Тестируем функцию chess', function () {
 	});
 
 	QUnit.test('Проверка входных данных на валидность', function (assert) {
-		let object = {
+		const object = {
 			this: 1,
 			is: "2",
-			 Sparta: "!!!",
+			Sparta: "!!!",
 		};
-		assert.strictEqual(chess("this is a string"), null);
-		assert.strictEqual(chess(Infinity), null);
-		assert.strictEqual(chess(object), null);
+		assert.strictEqual(chess("this is a string"), "Ошибка ввода");
+		assert.strictEqual(chess(Infinity), "Ввод бесконечен");
+		assert.strictEqual(chess(object), "Ошибка ввода");
 	});
 });

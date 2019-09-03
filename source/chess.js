@@ -8,13 +8,20 @@
 * */
 
  const chess = N => {
+     if (+N < 2) {
+         return 'Шахматной доски размером меньше чем 2х2 не бывает';
+     }
 
-    if(+N<2 || isNaN(+N) || !isFinite(N)){
-        return null;
-    }
+     if ( isNaN(+N) ) {
+         return 'Ошибка ввода';
+     }
 
-    const str1 = "* ".repeat(N/2+1).slice(0, N) + '\n';
-    const str2 = " *".repeat(N/2+1).slice(0, N) + '\n';
+     if ( !isFinite(N) ){
+         return 'Ввод бесконечен';
+     }
 
-     return (str1 + str2).repeat(N/2+1).slice( 0, str1.length * N);
+     const str1 = "* ".repeat(N / 2 + 1).slice(0, N) + '\n';
+     const str2 = " *".repeat(N / 2 + 1).slice(0, N) + '\n';
+
+     return `${str1}${str2}`.repeat(N / 2 + 1).slice(0, str1.length * N);
 };
